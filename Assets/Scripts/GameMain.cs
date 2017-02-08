@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 
 //游戏主程序
-namespace GameMain
+namespace GameMainNS
 
 {
     public static class GameMain
@@ -12,5 +12,18 @@ namespace GameMain
         //TODO 从配置文件中读取英雄属性
 
 
+    }
+
+    //用来管理战场所有的状态
+    //考虑作成单例模式？
+    public class Battle
+    {
+        //开始，初始化战场
+        //参数是从上一个页面传来的阵容配置
+        //双方阵容配置如何传递？网络的部分，先不考虑
+        public void initLoad(string data)
+        {
+
+        }
     }
 }

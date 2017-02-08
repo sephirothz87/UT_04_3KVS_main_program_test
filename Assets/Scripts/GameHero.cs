@@ -1,10 +1,10 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 
-namespace BasicHeroNS
+namespace GameHeroNS
 {
     //游戏中的英雄（所有装备技能等等都已经加载完的状态）
-    public class BasicHero
+    public class GameHero
     {
         public int id;
 
@@ -36,13 +36,14 @@ namespace BasicHeroNS
             return name;
         }
 
-        public void BasicHero(int id,int troop)
-        {
+        //public void GameHero(int id,int troop)
+        //{
 
-        }
+        //}
     }
 
     //游戏中最终使用的示例英雄
-    public class Hero:BasicHero{
+    public class Hero: GameHero
+    {
     }
 }
