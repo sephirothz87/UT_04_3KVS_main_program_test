@@ -18,10 +18,8 @@ public class S_01 : MonoBehaviour {
         //string bh_name = bh.name;
         //Debug.Log(bh.name);
 
-        //mainBattle = new GameMainNS.Battle();
-        //mainBattle.initLoad("mock data");
-
-
+        mainBattle = new GameMainNS.Battle();
+        mainBattle.initLoad("mock data");
     }
 
     // Update is called once per frame
@@ -30,24 +28,18 @@ public class S_01 : MonoBehaviour {
         if (Input.GetKeyDown(KeyCode.Space))
         {
             Debug.Log("您按下了空格键");
+            
 
-            Debug.Log("");
+            mainBattle.team_1_blue.heros[0]._01_on_attack_over(mainBattle.team_1_blue.heros[0], mainBattle.team_1_blue.heros[0], mainBattle,500);
 
-            int dm = mainBattle.team_1_blue.heros[0]._01_on_attck_over(500);
-
-
-            Debug.Log("dm");
-            Debug.Log(dm);
-
-
+            Debug.Log(mainBattle.team_1_blue.heros[0].health);
         }
 
         if (Input.GetKeyDown(KeyCode.T))
         {
             Debug.Log("您按下了T键");
 
-            //抽象工厂模式测试
-            //test_func_20170208153114();
+            mainBattle.team_1_blue.heros[1]._01_on_attack_over(mainBattle.team_1_blue.heros[0], mainBattle.team_1_blue.heros[0], mainBattle, 500);
         }
     }
 }

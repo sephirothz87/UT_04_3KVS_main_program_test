@@ -22,7 +22,7 @@ namespace BaseHeroNS
     }
 
     //英雄基类，用来管理公共属性
-    public class BaseHero
+    public abstract class BaseHero
     {
         //英雄的id
         public int id;
@@ -49,6 +49,7 @@ namespace BaseHeroNS
             this.defend_p = defend_p;
         }
 
+        /*
         //从配置文件中读取英雄的基础信息
         //public BaseHero getBasicInfoFromConfig(int id)
         public BaseHero getBasicInfoFromConfig(int id)
@@ -63,7 +64,7 @@ namespace BaseHeroNS
             int defend_p = 85;
 
 
-            BaseHero bh = new BaseHero();
+            //BaseHero bh = new BaseHero();
             //BaseHero bh = new BaseHero(id, health, attack_p, defend_p);
 
             //TODO 通过反射实现用字符串新建英雄
@@ -82,6 +83,7 @@ namespace BaseHeroNS
 
             return bh;
         }
+        */
 
         //暂时定5个技能函数
         public void skill_1()

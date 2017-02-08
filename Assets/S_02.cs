@@ -15,11 +15,24 @@ public class S_02 : MonoBehaviour {
         {
             Debug.Log("您按下了T键");
 
-            //抽象工厂模式测试 2017-02-08-154032
-            BaseFactory bf = new SonAFactory();
-            BaseClass bc = bf.createSon();
+            //工厂模式测试，可以选择不重写方法  2017-2-8 18:01:01
 
-            bc.DoThing();
+
+            //HeroF hf = new ZhaoYunF();
+            //Hero h = hf.createHero();
+
+            //h.onDam();
+
+            Hero h = new ZhaoYun();
+            h.onDam();
+
+            //工厂模式测试，不重写方法  2017-2-8 18:01:01
+
+            //抽象工厂模式测试 2017-02-08-154032
+            //BaseFactory bf = new SonAFactory();
+            //BaseClass bc = bf.createSon();
+
+            //bc.DoThing();
             //抽象工厂模式测试 2017-02-08-154032
         }
 
@@ -28,60 +41,122 @@ public class S_02 : MonoBehaviour {
             Debug.Log("您按下了R键");
 
             //抽象工厂模式测试 2017-02-08-154032
-            BaseFactory bf = new SonBFactory();
-            BaseClass bc = bf.createSon();
+            //BaseFactory bf = new SonBFactory();
+            //BaseClass bc = bf.createSon();
 
-            bc.DoThing();
+            //bc.DoThing();
             //抽象工厂模式测试 2017-02-08-154032
         }
     }
 
+    
+    //工厂模式测试，不重写方法  2017-2-8 18:01:01
+
+    //public class Hero
+    //{
+    //    public void onDam()
+    //    {
+    //        Debug.Log("Hero onDam");
+    //    }
+    //}
+    public interface Hero
+    {
+        void onDam();
+    }
+
+    public interface HeroF
+    {
+        Hero createHero();
+    }
+
+    public class ZhaoYun : Hero
+    {
+        public void onDam()
+        {
+            Debug.Log("ZhaoYun onDam");
+        }
+    }
+
+    public class LvBu :Hero
+    {
+        public void onDam()
+        {
+            Debug.Log("LvBu onDam");
+        }
+    }
+
+    public class ZhaoYunF :HeroF
+    {
+        public Hero createHero()
+        {
+            return new ZhaoYun();
+        }
+    }
+
+    public class LvBuF : HeroF
+    {
+        public Hero createHero()
+        {
+            return new LvBu();
+        }
+    }
+
+
+
+
+
+
+
+
+
+    //工厂模式测试，不重写方法  2017-2-8 18:01:01
+
     //抽象工厂模式测试 2017-02-08-154032
-    void test_func_20170208153114()
-    {
-        Debug.Log("test_func_20170208153114");
-    }
+    //void test_func_20170208153114()
+    //{
+    //    Debug.Log("test_func_20170208153114");
+    //}
 
-    public abstract class BaseClass
-    {
-        public abstract void DoThing();
-    }
+    //public abstract class BaseClass
+    //{
+    //    public abstract void DoThing();
+    //}
 
-    public class SonA : BaseClass
-    {
-        public override void DoThing()
-        {
-            Debug.Log("Do Thing in son A");
-        }
-    }
+    //public class SonA : BaseClass
+    //{
+    //    public override void DoThing()
+    //    {
+    //        Debug.Log("Do Thing in son A");
+    //    }
+    //}
 
-    public class SonB : BaseClass
-    {
-        public override void DoThing()
-        {
-            Debug.Log("Do Thing in son B");
-        }
-    }
+    //public class SonB : BaseClass
+    //{
+    //    public override void DoThing()
+    //    {
+    //        Debug.Log("Do Thing in son B");
+    //    }
+    //}
 
-    public interface BaseFactory
-    {
-        BaseClass createSon();
-    }
+    //public interface BaseFactory
+    //{
+    //    BaseClass createSon();
+    //}
 
-    public class SonAFactory : BaseFactory
-    {
-        public BaseClass createSon()
-        {
-            return new SonA();
-        }
-    }
+    //public class SonAFactory : BaseFactory
+    //{
+    //    public BaseClass createSon()
+    //    {
+    //        return new SonA();
+    //    }
+    //}
 
-    public class SonBFactory : BaseFactory
-    {
-        public BaseClass createSon()
-        {
-            return new SonB();
-        }
-    }
+    //public class SonBFactory : BaseFactory
+    //{
+    //    public BaseClass createSon()
+    //    {
+    //        return new SonB();
+    //    }
+    //}
     //抽象工厂模式测试 2017-02-08-154032
 }
