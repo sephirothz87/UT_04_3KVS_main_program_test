@@ -6,7 +6,7 @@ using UnityEngine;
 using BaseHeroNS;
 
 //游戏主程序
-namespace GameMainNS
+namespace GameMainANS
 
 {
     public static class GameMain
@@ -42,24 +42,8 @@ namespace GameMainNS
         //双方阵容配置如何传递？网络的部分，先不考虑
         public void initLoad(string data)
         {
-            this.team_1_blue = new Team();
-            this.team_2_red = new Team();
-
-            //读取到了id为1的英雄，根据id 1来新建一个赵云
-            //TODO 映射关系
-            //BaseHero bh = new BaseHero();
-            //BaseHero h = bh.getBasicInfoFromConfig(1);
-
-            //Hero h = bh.getBasicInfoFromConfig(1);
-
-            
-            Hero h = new Hero();
-            h = h.init(1);
-
-
-            //_0001_ZhaoYun h = new _0001_ZhaoYun();
-
-            this.team_1_blue.heros[0]=h;
+            //this.team_1_blue = new Team();
+            //this.team_2_red = new Team();
         }
     }
 
@@ -74,8 +58,8 @@ namespace GameMainNS
         }
     }
 
-    //public abstract class Hero
-    public class Hero
+    public abstract class Hero
+    //public class Hero
     {
         //英雄的id
         public int id;
@@ -126,7 +110,7 @@ namespace GameMainNS
             this.attack_p = attack_p;
             this.defend_p = defend_p;
 
-            Hero bh = new Hero();
+            _0001_ZhaoYun bh = new _0001_ZhaoYun();
 
             switch (id)
             {
@@ -147,12 +131,7 @@ namespace GameMainNS
 
         }
 
-        public int _01_on_attck_over(int basic_damage)
-        {
-            Console.WriteLine("Hero _01_on_attck_over");
-            Debug.Log("Hero _01_on_attck_ove");
-            return 0;
-        }
+        public abstract int _01_on_attck_over(int basic_damage);
 
         //实际各个英雄，管理特殊的结算点，结算方法，技能函数等
         public class _0001_ZhaoYun : Hero
@@ -166,7 +145,7 @@ namespace GameMainNS
 
             }
 
-            public int _01_on_attck_over(int basic_damage)
+            public override int _01_on_attck_over(int basic_damage)
             {
                 Console.WriteLine("_0001_ZhaoYun _01_on_attck_over");
                 Debug.Log("_0001_ZhaoYun _01_on_attck_over");

@@ -50,6 +50,7 @@ namespace BaseHeroNS
         }
 
         //从配置文件中读取英雄的基础信息
+        //public BaseHero getBasicInfoFromConfig(int id)
         public BaseHero getBasicInfoFromConfig(int id)
         {
 
@@ -108,9 +109,9 @@ namespace BaseHeroNS
 
         }
 
-        public void _01_on_attck_over()
+        public int _01_on_attck_over(int basic_damage)
         {
-
+            return 0;
         }
 
 
@@ -130,6 +131,7 @@ namespace BaseHeroNS
 
         public int _01_on_attck_over(int basic_damage)
         {
+            Console.WriteLine("_0001_ZhaoYun _01_on_attck_over");
             float dec_per = 1.0f - this.health / this.maxHealth;
             return (int)(basic_damage * dec_per);
         }
