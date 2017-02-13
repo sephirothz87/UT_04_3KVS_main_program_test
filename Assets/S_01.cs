@@ -18,6 +18,8 @@ public class S_01 : MonoBehaviour {
         //string bh_name = bh.name;
         //Debug.Log(bh.name);
 
+        //TODO 从上一个界面传来卡组参数，英雄装备等等等
+        
         mainBattle = new GameMainNS.Battle();
         mainBattle.initLoad("mock data");
     }
@@ -40,6 +42,8 @@ public class S_01 : MonoBehaviour {
             Debug.Log("您按下了T键");
 
             mainBattle.team_1_blue.heros[1]._01_on_attack_over(mainBattle.team_1_blue.heros[0], mainBattle.team_1_blue.heros[0], mainBattle, 500);
+
+            Debug.Log(mainBattle.team_1_blue.heros[1].health);
         }
     }
 }

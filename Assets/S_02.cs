@@ -10,7 +10,8 @@ public class S_02 : MonoBehaviour {
     }
 	
 	// Update is called once per frame
-	void Update () {
+	void Update ()
+    {
         if (Input.GetKeyDown(KeyCode.T))
         {
             Debug.Log("您按下了T键");
@@ -23,8 +24,10 @@ public class S_02 : MonoBehaviour {
 
             //h.onDam();
 
-            Hero h = new ZhaoYun();
-            h.onDam();
+            //Hero h = new ZhaoYun();
+            //h.onDam();
+
+            test_function20170213165249();
 
             //工厂模式测试，不重写方法  2017-2-8 18:01:01
 
@@ -59,9 +62,29 @@ public class S_02 : MonoBehaviour {
     //        Debug.Log("Hero onDam");
     //    }
     //}
-    public interface Hero
+    void test_function20170213165249()
     {
-        void onDam();
+        HeroF AF = new ZhaoYunF();
+        HeroF BF = new LvBuF();
+
+        Hero A = AF.createHero();
+        Hero B = BF.createHero();
+
+        A.onDam();
+        B.onDam();
+
+        A.onAtt();
+        B.onAtt();
+    } 
+
+    public abstract class Hero
+    {
+        public abstract void onDam();
+
+        public virtual void onAtt()
+        {
+            Debug.Log("Hero onAtt");
+        }
     }
 
     public interface HeroF
@@ -71,18 +94,28 @@ public class S_02 : MonoBehaviour {
 
     public class ZhaoYun : Hero
     {
-        public void onDam()
+        public override void onDam()
         {
             Debug.Log("ZhaoYun onDam");
+        }
+
+        public override void onAtt()
+        {
+            Debug.Log("ZhaoYun onAtt");
         }
     }
 
     public class LvBu :Hero
     {
-        public void onDam()
+        public override void onDam()
         {
             Debug.Log("LvBu onDam");
         }
+
+        //public override void onAtt()
+        //{
+        //    Debug.Log("LvBu onAtt");
+        //}
     }
 
     public class ZhaoYunF :HeroF

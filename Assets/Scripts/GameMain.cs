@@ -45,8 +45,6 @@ namespace GameMainNS
             this.team_1_blue = new Team();
             this.team_2_red = new Team();
 
-            //读取到了id为1的英雄，根据id 1来新建一个赵云
-            //TODO 映射关系
             //BaseHero bh = new BaseHero();
             //BaseHero h = bh.getBasicInfoFromConfig(1);
 
@@ -60,12 +58,22 @@ namespace GameMainNS
 
             //this.team_1_blue.heros[0]=h;
 
-            HeroFactory hf1 = new _0001_ZhaoYunF();
-            Hero h1 = hf1.createHero();
-            this.team_1_blue.heros[0]=h1;
+            //HeroFactory hf1 = new _0001_ZhaoYunF();
+            //Hero h1 = hf1.createHero();
+            //this.team_1_blue.heros[0]=h1;
 
-            HeroFactory hf2 = new _0002_LvBuF();
-            Hero h2 = hf2.createHero();
+            //HeroFactory hf2 = new _0002_LvBuF();
+            //Hero h2 = hf2.createHero();
+            //this.team_1_blue.heros[1] = h2;
+
+            //读取到了id为1的英雄，根据id 1来新建一个赵云
+            //TODO 映射关系  
+            //TODO 反射
+            Hero h1 = new _0001_ZhaoYun(1, 2164, 113, 85);
+            this.team_1_blue.heros[0] = h1;
+
+
+            Hero h2 = new _0002_LvBu(2, 2102, 150, 90);
             this.team_1_blue.heros[1] = h2;
         }
     }
@@ -109,7 +117,9 @@ namespace GameMainNS
             this.defend_p = defend_p;
         }
 
-        public abstract void _01_on_attack_over(Hero hero_a, Hero hero_b, Battle battle, int basic_damage);
+        public virtual void _01_on_attack_over(Hero hero_a, Hero hero_b, Battle battle, int basic_damage) {
+            Debug.Log("Hero common _01_on_attack_over");
+        }
 
         /*
         public void _01_on_attack_over(Hero hero_a, Hero hero_b, Battle battle, int basic_damage)
@@ -118,13 +128,17 @@ namespace GameMainNS
         }*/
     }
 
-    public interface HeroFactory
-    {
-        Hero createHero();
-    }
+    //public interface HeroFactory
+    //{
+    //    Hero createHero();
+    //}
 
     public class _0001_ZhaoYun : Hero
     {
+        public _0001_ZhaoYun() : base()
+        {
+
+        }
         public _0001_ZhaoYun(int id, int health, int attack_p, int defend_p) : base(id, health, attack_p, defend_p)
         {
 
@@ -158,27 +172,31 @@ namespace GameMainNS
         }
     }
 
-    public class _0001_ZhaoYunF : HeroFactory
-    {
-        public Hero createHero()
-        {
-            return new _0001_ZhaoYun(1, 2164,113,85);
-        }
-    }
+    //public class _0001_ZhaoYunF : HeroFactory
+    //{
+    //    public Hero createHero()
+    //    {
+    //        return new _0001_ZhaoYun(1, 2164,113,85);
+    //    }
+    //}
 
     public class _0002_LvBu : Hero
     {
-        public override void _01_on_attack_over(Hero hero_a, Hero hero_b, Battle battle, int basic_damage)
+        public _0002_LvBu() : base()
         {
-            Debug.Log("_0002_LvBu _01_on_attack_over");
+
+        }
+        public _0002_LvBu(int id, int health, int attack_p, int defend_p) : base(id, health, attack_p, defend_p)
+        {
+
         }
     }
 
-    public class _0002_LvBuF : HeroFactory
-    {
-        public Hero createHero()
-        {
-            return new _0002_LvBu();
-        }
-    }
+    //public class _0002_LvBuF : HeroFactory
+    //{
+    //    public Hero createHero()
+    //    {
+    //        return new _0002_LvBu();
+    //    }
+    //}
 }
